@@ -41,7 +41,7 @@
 
           <q-card-actions align="right" class="bg-white text-teal">
             <q-btn flat label="Cancel" v-close-popup />
-            <q-btn flat label="OK" @click="createNewTask" v-close-popup />
+            <q-btn flat label="OK" @click="createNewTask" />
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -171,6 +171,7 @@ export default {
     },
     createNewTask() {
       console.log("criado");
+      this.persistent = false;
     }
   },
 };
