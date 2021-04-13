@@ -1,26 +1,33 @@
-# Quasar App (client)
+# Vue JS com Quasar
 
-A Quasar Framework app
+## Pré-requisitos
 
-## Install the dependencies
-```bash
-yarn
+- NodeJS versão > 10.0
+- yarn
+
+## Intalação
+
+O projeto utiliza do framework Quasar, para instalar utilize o comando abaixo:
+
+```sh
+yarn global add @quasar/cli
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
+## Executando o Projeto
+
+Instale as dependencias rodando o comando:
+
+```sh
+yarn install
+```
+
+Execute o projeto com o comando:
+
+```sh 
 quasar dev
 ```
 
-### Lint the files
-```bash
-yarn run lint
-```
 
-### Build the app for production
-```bash
-quasar build
-```
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+
