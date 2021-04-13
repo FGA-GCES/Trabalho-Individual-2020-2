@@ -51,7 +51,7 @@
         style="min-width: 250px; width: 25%"
         class="q-pa-md"
         v-for="item in filteredItems"
-        :key="item.title"
+        :key="item.pk"
       >
         <q-card class="my-card">
           <q-card-section class="row justify-between text-h6">
@@ -69,109 +69,61 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "PageIndex",
   data() {
     return {
       text: "",
       persistent: false,
-      items: [
-        {
-          title: "titulo1",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo2",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo3",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo4",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo5",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo6",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo7",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo8",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo9",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo12",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo123",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo321",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo541",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titul66o",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo2441",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "tit1ulo",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo2",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titul42o",
-          description: "Descrição elaborada",
-        },
-        {
-          title: "titulo543",
-          description: "Descrição elaborada",
-        },
-      ],
+      items: [],
       filteredItems: [],
       title: "",
       description: "",
     };
   },
-  beforeMount() {
+  async beforeMount() {
+    await axios.get('http://localhost:8000/task/')
+    .then((res) => {
+      this.items = res.data;
+    })
+    .catch((err) => {
+        console.error(err);
+        alert('Ocorreu algum erro.');
+    })
     this.filteredItems = this.items;
   },
   methods: {
-    complete_task(task) {
-      this.items = this.items.filter((item) => item.title !== task.title);
-      this.filterTasks();
+    async complete_task(task) {
+      await axios.delete(`http://localhost:8000/task/delete/${task.pk}/`)
+      .then((res) => {
+        this.items = this.items.filter((item) => item.pk !== task.pk);
+        this.filterTasks();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Ocorreu algum erro ao concluir a tarefa.');
+      })
     },
     filterTasks() {
       this.filteredItems = this.items.filter((item) => item.title.includes(this.text));
     },
-    createNewTask() {
-      console.log("criado");
-      this.persistent = false;
+    async createNewTask() {
+      await axios.post('http://localhost:8000/task/create/', {
+        title: this.title,
+        description: this.description
+      })
+      .then((res) => {
+        this.items.push(res.data);
+        this.title = '';
+        this.description = '';
+        this.persistent = false;
+        this.filterTasks();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Ocorreu algum erro ao criar a tarefa.');
+      })
     }
   },
 };
