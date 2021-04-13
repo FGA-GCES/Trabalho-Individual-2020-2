@@ -2,7 +2,7 @@
 
 ## Pré-requisitos
 
-- NodeJS versão > 10.0
+- NodeJS versão >= 10.0
 - yarn
 
 ## Intalação
@@ -27,7 +27,10 @@ Execute o projeto com o comando:
 quasar dev
 ```
 
+## Rodando os Testes
 
+Para rodar os testes do projeto execute o comando:
 
-
-
+```shell
+quasar test --unit jest
+```
