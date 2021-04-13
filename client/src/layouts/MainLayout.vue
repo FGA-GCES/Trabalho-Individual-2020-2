@@ -8,12 +8,6 @@
 
 <script>
 export default {
-  name: 'MainLayout',
-  data () {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
-    }
-  }
+  name: 'MainLayout'
 }
 </script>

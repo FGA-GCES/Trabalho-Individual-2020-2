@@ -8,38 +8,55 @@
           outlined
           v-model="text"
           placeholder="Titulo da tarefa..."
+          @input="filterTasks"
         >
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
       </div>
-      <q-btn color="white" text-color="black" label="Nova tarefa" @click="persistent = true" />
+      <q-btn
+        color="white"
+        text-color="black"
+        label="Nova tarefa"
+        @click="persistent = true"
+      />
       <q-dialog
         v-model="persistent"
         persistent
         transition-show="scale"
         transition-hide="scale"
       >
-        <q-card class="bg-teal text-white" style="width: 300px">
+        <q-card style="width: 30%; height: 45%">
           <q-card-section>
-            <div class="text-h6">Persistent</div>
+            <div class="text-h4">Nova tarefa</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Click/Tap on the backdrop. </q-card-section>
+          <q-card-section>
+            <q-input filled v-model="title" label="Titulo" />
+          </q-card-section>
+          <q-card-section>
+            <q-input filled v-model="description" type="textarea" label="Descrição" />
+          </q-card-section>
 
           <q-card-actions align="right" class="bg-white text-teal">
-            <q-btn flat label="OK" v-close-popup />
+            <q-btn flat label="Cancel" v-close-popup />
+            <q-btn flat label="OK" @click="createNewTask" v-close-popup />
           </q-card-actions>
         </q-card>
       </q-dialog>
     </div>
-    <div class="row q-pa-md">
-      <div style="width: 20%" class="q-pa-md" v-for="item in items" :key="item.title">
+    <div class="row">
+      <div
+        style="min-width: 250px; width: 25%"
+        class="q-pa-md"
+        v-for="item in filteredItems"
+        :key="item.title"
+      >
         <q-card class="my-card">
           <q-card-section class="row justify-between text-h6">
             {{ item.title }}
-            <q-icon name="check_circle" @click="complete_task" class="text-grey" />
+            <q-icon name="close" @click="complete_task(item)" class="text-grey" />
           </q-card-section>
           <q-separator inset />
           <q-card-section>
@@ -60,93 +77,103 @@ export default {
       persistent: false,
       items: [
         {
-          title: "titulo",
+          title: "titulo1",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo2",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo3",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo4",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo5",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo6",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo7",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo8",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo9",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo12",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo123",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo321",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo541",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titul66o",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo2441",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "tit1ulo",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo2",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titul42o",
           description: "Descrição elaborada",
         },
         {
-          title: "titulo",
+          title: "titulo543",
           description: "Descrição elaborada",
         },
       ],
+      filteredItems: [],
+      title: "",
+      description: "",
     };
   },
+  beforeMount() {
+    this.filteredItems = this.items;
+  },
   methods: {
-    complete_task() {
-      console.log("click");
+    complete_task(task) {
+      this.items = this.items.filter((item) => item.title !== task.title);
+      this.filterTasks();
     },
+    filterTasks() {
+      this.filteredItems = this.items.filter((item) => item.title.includes(this.text));
+    },
+    createNewTask() {
+      console.log("criado");
+    }
   },
 };
 </script>
 
-<style lang="sass" scoped>
-.my-card
-  width: 100%
-</style>
+<style lang="sass" scoped></style>
