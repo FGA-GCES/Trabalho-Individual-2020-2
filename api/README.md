@@ -37,6 +37,7 @@ Agora nós devemos realizar a criação de um banco de dados para o nosso projet
 CREATE DATABASE myproject;
 CREATE USER myuser WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE myproject TO myuser;
+ALTER USER myuser CREATEDB;
 ```
 
 Enfim podemos sair da sessão atual do postgres utilizando:
@@ -73,6 +74,14 @@ Para a execução do projeto devemos utilizar o seguinte comando:
 ```shell
 python3 manage.py runserver
 ```
+
+## Rodando os Testes
+
+Para rodar os testes do projeto execute o comando:
+
+```shell
+python manage.py test
+``` 
 
 ## Arquivos de Configuração
 
