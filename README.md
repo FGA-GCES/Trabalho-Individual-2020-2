@@ -14,6 +14,7 @@ Para executar a aplicação em sua máquina, basta seguir o passo-a-passo descri
 
 
 ## Critérios de avaliação
+Os item abaixo serão avaliados tanto de forma quantitativa (se foi realizado a implementação + documentação), quanto qualitativamente (como foi implementado, entendimento dos conceitos na prática, complexidade da solução). Faça os commits atômicos, bem documentados, completos a fim de facilitar o entendimento e avaliação do seu trabalho. Lembrando que esse trabalho é individual. 
 
 ### 1. Containerização
 
