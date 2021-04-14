@@ -10,7 +10,7 @@ O sistema se trata de uma aplicação Web, cuja funcionalidade consiste numa lis
 - Back-end escrito em Django REST;
 - Banco de Dados PostgreSQL;
 
-Para executar a aplicação na sua máquina, basta seguir o passo-a-passo descrito nos READMEs das pastas [api](./api/README.md) e [client](./client/README.md).
+Para executar a aplicação em sua máquina, basta seguir o passo-a-passo descrito no arquivos s README das pastas [api](./api/README.md) e [client](./client/README.md).
 
 
 ## Critérios de avaliação
@@ -32,7 +32,8 @@ Você deverá criar um 'Fork' deste repositório, onde será desenvolvida sua so
 
 - Build: Construção completa do ambiente;
 - Testes: Os testes automatizados da aplicação devem ser executados;
-- Coleta de métricas: Deverá ser realizada a integração com algum serviço externo de coleta de métricas de qualidade;
+- Análise Estática de código: Deverá ser realizada a integração com algum serviço externo de análise estática de código fonte (Ex: Code Climate), análise de folhas de estilo (Stylesheet / Linter);
+- Análise de cobertura de testes: Devera será ser incluida também uma ferramenta para apontar a métrica de cobertura de testes.
 
 O sistema de integração contínua deve exibir as informações de cada pipeline, e impedir que trechos de código que não passem corretamente por todo o processo sejam adicionados à 'branch default' do repositório.
 
@@ -40,7 +41,7 @@ Para esta parte do trabalho, poderá ser utilizada qualquer tecnologia ou ferram
 
 ### 3. Deploy contínuo
 
-Também deve ser feito a configuração de uma pipeline de modo a publicar a aplicação automaticamente, sempre que um novo trecho de código seja integrado à branch default.
+Também deve ser feita a configuração de um pipeline de modo a publicar a aplicação automaticamente, sempre que um novo trecho de código seja integrado à branch default.
 
 Assim como na Integração Contiinua, poderá ser utilizado qualquer servidor de cloud que o aluno desejar, como DigitalOcean, Heroku, AWS, entre outros.
 
