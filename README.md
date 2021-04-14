@@ -16,6 +16,41 @@ Para executar a aplicação em sua máquina, basta seguir o passo-a-passo descri
 ## Critérios de avaliação
 Os item abaixo serão avaliados tanto de forma quantitativa (se foi realizado a implementação + documentação), quanto qualitativamente (como foi implementado, entendimento dos conceitos na prática, complexidade da solução). Faça os commits atômicos, bem documentados, completos a fim de facilitar o entendimento e avaliação do seu trabalho. Lembrando que esse trabalho é individual. 
 
+Os Itens de avaliação são:
+
+**1. Containerização**
+
+- Container do Back-end
+- Container do Front-end
+- Container do Banco de Dados
+- Automação entre os containers (Docker-compose)
+
+**2. Integração contínua (Front-end)**
+
+- Build: Construção completa do ambiente
+- Testes: Os testes automatizados da aplicação devem ser executados
+- Coleta de métricas: Deverá ser realizada a integração com algum serviço externo de coleta de métricas de qualidade;
+
+Regras de avaliação: O sistema de integração contínua deve exibir as informações de cada pipeline, e impedir que trechos de código que não passem corretamente por todo o processo sejam adicionados à 'branch default' do repositório.
+
+**3. Integração contínua (Back-end)**
+
+- Build: Construção completa do ambiente
+- Testes: Os testes automatizados da aplicação devem ser executados
+- Coleta de métricas: Deverá ser realizada a integração com algum serviço externo de coleta de métricas de qualidade;
+
+Regras de avaliação: O sistema de integração contínua deve exibir as informações de cada pipeline, e impedir que trechos de código que não passem corretamente por todo o processo sejam adicionados à 'branch default' do repositório.
+
+**4. Coverage (Extra)**
+
+Caso cumpra todos os requisitos obrigatórios descritos acima, será atribuída uma pontuação extra para o aluno que configure sua pipeline de modo a coletar a porcentagem de cobertura de testes na aplicação (Back end e Front end).
+
+**5. Deploy contínuo (Extra)**
+
+Caso cumpra todos os requisitos obrigatórios descritos acima, será atribuída uma pontuação extra para o aluno que configure sua pipeline de modo a publicar a aplicação automaticamente, sempre que um novo trecho de código seja integrado à branch default.
+
+
+
 ### 1. Containerização
 
 A aplicação deverá ter seu ambiente completamente containerizado. Desta forma, cada subsistema (Front-end, Back-end e Banco de Dados) deverá ser isolado em um container individual.
