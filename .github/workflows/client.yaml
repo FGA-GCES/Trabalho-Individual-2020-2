@@ -1,6 +1,10 @@
 name: Client CI
 
-on: [pull_request, push]
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
@@ -16,7 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd client
+      - working-directory: client
       - run: ls
       - run: yarn global add @quasar/cli
       - run: yarn install
