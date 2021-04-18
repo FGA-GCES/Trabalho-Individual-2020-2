@@ -6,6 +6,7 @@
   "author": "Ezequiel <ezequiel1de1oliveira@gmail.com>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
     "test:unit": "jest --updateSnapshot",
@@ -49,6 +50,6 @@
   "engines": {
     "node": ">= 10.18.1",
     "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "yarn": ">= 1.15.2"
   }
 }
