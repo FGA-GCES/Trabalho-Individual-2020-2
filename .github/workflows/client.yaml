@@ -22,8 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - working-directory: client
         run: |
-          ls
-          yarn global add @quasar/cli
           yarn install
           yarn lint
           yarn test
