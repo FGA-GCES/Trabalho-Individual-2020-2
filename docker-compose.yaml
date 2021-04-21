@@ -1,0 +1,31 @@
+version: "3"
+services:
+  api:
+    build: ./api
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+
+  client:
+    build: ./client
+    depends_on:
+      - postgres
+      - api
+    ports:
+      - "8080:8080"
+      - "8788:8788"
+    volumes:
+      - ./client:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: myproject
