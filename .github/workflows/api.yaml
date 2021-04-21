@@ -31,7 +31,6 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-        working-directory: api
       - name: Setup python environment
         uses: actions/setup-python@v2
         with:
