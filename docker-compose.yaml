@@ -29,3 +29,5 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: password
       POSTGRES_DB: myproject
+      DB_HOST: postgres
+      DB_PORT: 5432
