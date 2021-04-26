@@ -1,17 +1,16 @@
 # Trabalho Individual 2020.2
 
-
 A Gestão de Configuração de Software é parte fundamental no curso de GCES, e dominar os conhecimentos de configuração de ambiente, containerização, virtualização, integração e deploy contínuo tem se tornado cada vez mais necessário para ingressar no mercado de trabalho.
 
 Para exercitar estes conhecimentos, você deverá aplicar os conceitos estudados ao longo da disciplina no produto de software contido neste repositório.
 
 O sistema se trata de uma aplicação Web, cuja funcionalidade consiste numa lista de tarefas, que é composta de:
+
 - Front-end escrito em Javascript, utilizando os frameworks Vue.JS e Quasar;
 - Back-end escrito em Django REST;
 - Banco de Dados PostgreSQL;
 
 Para executar a aplicação em sua máquina, basta seguir o passo-a-passo descrito no arquivos s README das pastas [api](./api/README.md) e [client](./client/README.md).
-
 
 ## Critérios de avaliação
 
@@ -51,7 +50,7 @@ Caso cumpra todos os requisitos descritos acima, será atribuída uma pontuaçã
 
 ## Nota
 
-A nota de cada aluno será a soma dos itens abaixo que serão avaliados tanto de forma quantitativa (se foi realizado a implementação + documentação), quanto qualitativamente (como foi implementado, entendimento dos conceitos na prática, complexidade da solução). Faça os commits atômicos, bem documentados, completos a fim de facilitar o entendimento e avaliação do seu trabalho. Lembrando que esse trabalho é individual. 
+A nota de cada aluno será a soma dos itens abaixo que serão avaliados tanto de forma quantitativa (se foi realizado a implementação + documentação), quanto qualitativamente (como foi implementado, entendimento dos conceitos na prática, complexidade da solução). Faça os commits atômicos, bem documentados, completos a fim de facilitar o entendimento e avaliação do seu trabalho. Lembrando que esse trabalho é individual.
 
 Os Itens de avaliação são (cada item tem peso 1 na nota final de 0 - 10):
 
@@ -85,5 +84,3 @@ Caso cumpra todos os requisitos obrigatórios descritos acima, será atribuída 
 **5. Deploy contínuo (Extra)**
 
 Caso cumpra todos os requisitos obrigatórios descritos acima, será atribuída uma pontuação extra para o aluno que configure sua pipeline de modo a publicar a aplicação automaticamente, sempre que um novo trecho de código seja integrado à branch default.
-
-
