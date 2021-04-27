@@ -1,6 +1,6 @@
 FROM python:3.9.4
 
-RUN pip install djangorestframework psycopg2 django-cors-headers
+RUN pip install djangorestframework psycopg2 django-cors-headers pylint
 
 WORKDIR /api
 
