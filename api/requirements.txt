@@ -1,0 +1,12 @@
+Django==3.2
+django-cors-headers==3.7.0
+djangorestframework==3.12.4
+
+
+Markdown==3.2.2
+
+psycopg2==2.8.6
+
+Pygments==2.6.1
+
+PyYAML==5.3.1
