@@ -5,6 +5,10 @@
   "productName": "Quasar App",
   "author": "Ezequiel <ezequiel1de1oliveira@gmail.com>",
   "private": true,
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"See package.json => scripts for available tests.\" && exit 0",

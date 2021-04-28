@@ -1,14 +1,11 @@
 language: generic
-branches:
-  only:
-  - master
-  - dev
 
 services:
 - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.26.2
+  - DOCKER_COMPOSE_VERSION: 1.26.2
+  - CODECOV_TOKEN='cfb96bda-6e0b-4788-9bf6-ee85a8feb4aa'
 
 before_install:
 - sudo rm /usr/local/bin/docker-compose
@@ -24,6 +21,8 @@ jobs:
     
     - stage: test
       script:
-      - docker-compose run api python manage.py test
       - docker-compose run client yarn quasar test --unit jest
-    
+      - docker-compose run api ./test_api.sh
+
+after_success:
+  - codecov

@@ -1,7 +1,8 @@
 #!/bin/bash
 pip install coverage
+#pip install codecov
 
-coverage run /api/manage.py test
+coverage run manage.py test
 
 RESULT=$?
 if [ ${RESULT} != "0" ]; then
