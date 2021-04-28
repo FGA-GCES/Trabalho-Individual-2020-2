@@ -1,4 +1,6 @@
-language: generic
+language: python
+python:
+  - "3.6"
 
 jobs:
   include:
@@ -16,5 +18,13 @@ jobs:
       - docker-compose --version
       script:
       - docker-compose up -d --build
-      after_script:
-      - sudo docker-compose down
+    
+    - stage: test-api
+      services:
+      - docker
+      before_script:
+      - docker ps 
+      - docker exec -it api bash
+      script:
+      - python manage.py test
+    
