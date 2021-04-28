@@ -6,8 +6,9 @@
   "author": "Ezequiel <ezequiel1de1oliveira@gmail.com>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
+    "test": "quasar test --unit jest",
     "test:unit": "jest --updateSnapshot",
     "test:unit:ci": "jest --ci",
     "test:unit:coverage": "jest --coverage",
@@ -23,7 +24,7 @@
     "quasar": "^1.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^3.0.0",
+    "@quasar/app": "^2.0.0",
     "@quasar/quasar-app-extension-testing": "^1.0.3",
     "@quasar/quasar-app-extension-testing-unit-jest": "^2.2.2",
     "babel-eslint": "^10.0.1",
@@ -49,6 +50,6 @@
   "engines": {
     "node": ">= 10.18.1",
     "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "yarn": ">= 1.15.2"
   }
 }

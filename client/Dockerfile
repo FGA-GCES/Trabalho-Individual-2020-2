@@ -1,0 +1,13 @@
+FROM node:12.2.0-alpine
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY . .
+
+RUN yarn install
+
+RUN yarn global add @quasar/cli
+
+CMD [ "yarn", "dev" ]
