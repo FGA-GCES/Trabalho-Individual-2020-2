@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   db:
+    container_name: db
     image: postgres
     environment:
       POSTGRES_PASSWORD: password
@@ -12,6 +13,7 @@ services:
       - POSTGRES_USER=myuser
       - POSTGRES_PASSWORD=password
   api:
+    container_name: api
     build: ./api
     command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
     container_name: api
@@ -22,8 +24,8 @@ services:
     depends_on:
       - db
   client:
+    container_name: client
     build: ./client
-    #command: yarn dev
     volumes:
       - ./client:/code
     ports:
