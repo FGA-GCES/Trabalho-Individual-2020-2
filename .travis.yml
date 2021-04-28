@@ -1,4 +1,8 @@
 language: generic
+branches:
+  only:
+  - master
+  - dev
 
 services:
 - docker
