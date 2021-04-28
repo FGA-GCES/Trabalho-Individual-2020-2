@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Frontend Lint
-        run: docker-compose run app yarn lint
+        run: docker-compose run app bash -c "yarn && yarn lint"
 
   frontend-test:
     runs-on: ubuntu-latest
