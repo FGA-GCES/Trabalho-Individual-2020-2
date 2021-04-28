@@ -1,11 +1,11 @@
 FROM node:16
 
-RUN yarn global add @quasar/cli
-
-WORKDIR /api
+WORKDIR /client
 
 COPY . .
 
+RUN yarn global add @quasar/cli
+
 RUN yarn install
 
-CMD quasar dev
+CMD yarn && quasar dev
