@@ -38,7 +38,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-=        
       - name: Frontend Test
         run: docker-compose run app quasar test --unit jest
 
