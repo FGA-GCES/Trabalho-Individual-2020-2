@@ -4,10 +4,11 @@ EXPOSE 8080
 WORKDIR /client
 
 COPY package.json ./
-COPY package-lock.json ./
-RUN npm install 
-
+#COPY package-lock.json ./
+COPY yarn.lock ./
+#RUN npm install 
+RUN yarn install
 COPY . /client
 
-
-CMD ["npx", "quasar", "dev"]
+CMD ["yarn", "quasar", "dev"]
+#CMD ["npx", "quasar", "dev"]
