@@ -36,7 +36,12 @@
             <q-input filled v-model="title" label="Titulo" />
           </q-card-section>
           <q-card-section>
-            <q-input filled v-model="description" type="textarea" label="Descrição" />
+            <q-input
+              filled
+              v-model="description"
+              type="textarea"
+              label="Descrição"
+            />
           </q-card-section>
 
           <q-card-actions align="right" class="bg-white text-teal">
@@ -56,7 +61,11 @@
         <q-card class="my-card">
           <q-card-section class="row justify-between text-h6">
             {{ item.title }}
-            <q-icon name="close" @click="complete_task(item)" class="text-grey" />
+            <q-icon
+              name="close"
+              @click="complete_task(item)"
+              class="text-grey"
+            />
           </q-card-section>
           <q-separator inset />
           <q-card-section>
@@ -69,7 +78,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { api } from "../config/api";
 export default {
   name: "PageIndex",
   data() {
@@ -79,53 +88,58 @@ export default {
       items: [],
       filteredItems: [],
       title: "",
-      description: "",
+      description: ""
     };
   },
   async beforeMount() {
-    await axios.get('http://localhost:8000/task/')
-    .then((res) => {
-      this.items = res.data;
-    })
-    .catch((err) => {
+    await api
+      .get("/task/")
+      .then(res => {
+        this.items = res.data;
+      })
+      .catch(err => {
         console.error(err);
-        alert('Ocorreu algum erro.');
-    })
+        alert("Ocorreu algum erro.");
+      });
     this.filteredItems = this.items;
   },
   methods: {
     async complete_task(task) {
-      await axios.delete(`http://localhost:8000/task/delete/${task.pk}/`)
-      .then((res) => {
-        this.items = this.items.filter((item) => item.pk !== task.pk);
-        this.filterTasks();
-      })
-      .catch((err) => {
-        console.error(err);
-        alert('Ocorreu algum erro ao concluir a tarefa.');
-      })
+      await api
+        .delete(`/task/delete/${task.pk}/`)
+        .then(res => {
+          this.items = this.items.filter(item => item.pk !== task.pk);
+          this.filterTasks();
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Ocorreu algum erro ao concluir a tarefa.");
+        });
     },
     filterTasks() {
-      this.filteredItems = this.items.filter((item) => item.title.includes(this.text));
+      this.filteredItems = this.items.filter(item =>
+        item.title.includes(this.text)
+      );
     },
     async createNewTask() {
-      await axios.post('http://localhost:8000/task/create/', {
-        title: this.title,
-        description: this.description
-      })
-      .then((res) => {
-        this.items.push(res.data);
-        this.title = '';
-        this.description = '';
-        this.persistent = false;
-        this.filterTasks();
-      })
-      .catch((err) => {
-        console.error(err);
-        alert('Ocorreu algum erro ao criar a tarefa.');
-      })
+      await api
+        .post("/task/create/", {
+          title: this.title,
+          description: this.description
+        })
+        .then(res => {
+          this.items.push(res.data);
+          this.title = "";
+          this.description = "";
+          this.persistent = false;
+          this.filterTasks();
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Ocorreu algum erro ao criar a tarefa.");
+        });
     }
-  },
+  }
 };
 </script>
 
