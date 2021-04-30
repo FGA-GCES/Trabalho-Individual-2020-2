@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+        frontend:
+                build:
+                        context: client
+                        dockerfile: Dockerfile
+                volumes:
+                        - './client:/frontend'
+                ports:
+                        - '8080:8080'
+                depends_on:
+                        - backend
+
+        backend:
+                build:
+                        context: api
+                        dockerfile: Dockerfile
+                environment:
+                        POSTGRES_HOST: database
+                volumes:
+                        - './api:/backend'
+                ports:
+                        - '8000:8000'
+                depends_on:
+                        - database
+
+        database:
+                image: postgres:12
+                environment:
+                        POSTGRES_DB: myproject
+                        POSTGRES_USER: myuser
+                        POSTGRES_PASSWORD: password
+                ports:
+                        - '5432:5432'
