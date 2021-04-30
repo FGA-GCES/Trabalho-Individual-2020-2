@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: "pg_isready --username=postgres && psql --username=postgres --list"
+      timeout: 5s
+      retries: 50
+  api:
+    build: ./api
+    command: ["sh", "entrypoint.sh"]
+    volumes:
+      - ./api:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      db:
+        condition: service_healthy
