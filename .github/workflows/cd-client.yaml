@@ -1,4 +1,4 @@
-name: Deploy to heroku.
+name: Deploy to heroku [CLIENT].
 
 on:
   push:
