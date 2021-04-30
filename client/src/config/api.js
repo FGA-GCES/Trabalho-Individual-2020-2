@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import axios from 'axios';
 
 console.log(process.env.API_URL)
