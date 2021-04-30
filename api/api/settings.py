@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for api project.
 
@@ -83,7 +85,7 @@ DATABASES = {
         'NAME': 'myproject',
         'USER': 'myuser',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
         'PORT': '',
     }
 }
