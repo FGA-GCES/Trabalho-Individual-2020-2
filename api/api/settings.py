@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-sca_4i79@8^p7b4i3ggm!vz_&t7!+-omwh&8_q=lxbu%elp-o#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "trabalho-gces-api.herokuapp.com"
+    "trabalho-gces-api.herokuapp.com",
+    "localhost"
 ]
 
 
