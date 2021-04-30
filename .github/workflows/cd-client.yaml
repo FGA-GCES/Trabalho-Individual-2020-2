@@ -1,4 +1,3 @@
-
 name: Deploy to heroku.
 
 on:
@@ -12,16 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build, Push and Release a Docker container to Heroku [API].
+      - name: Build, Push and Release a Docker container to Heroku [CLIENT].
         uses: gonuit/heroku-docker-deploy@v1.3.2 
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          dockerfile_directory: ./api
-          dockerfile_name: dockerfile.prod
+          dockerfile_directory: ./client
+          dockerfile_name: dockerfile
           docker_options: "--no-cache"
           process_type: web
-          
-   
-          
