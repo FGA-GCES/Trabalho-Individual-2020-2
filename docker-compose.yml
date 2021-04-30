@@ -12,7 +12,7 @@ services:
     healthcheck:
       test: "pg_isready --username=postgres && psql --username=postgres --list"
       timeout: 5s
-      retries: 50
+      retries: 25
   api:
     build: ./api
     command: ["sh", "entrypoint.sh"]
@@ -23,3 +23,17 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  client:
+    container_name: "client"
+    build:
+      context: ./client/
+      target: "develop-stage"
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./client:/client"
+    command: /bin/sh -c "yarn && quasar dev"
+    depends_on:
+      - api
