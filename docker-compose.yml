@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  #BACK-END DA APLICAÇÃO
+
+  api:
+    build:
+      #PASTA DA API
+      context: api
+      dockerfile: Dockerfile
+    environment:
+      #VARIAVEL DE AMBIENTE, DO SETINGS.PY, PASSANDO O SERVIÇO DO BANCO DE DADOS
+      POSTGRES_HOST: db
+    #ESPELHA UMA PASTA DE FORA DO DOCKER PARA DENTRO DO DOCKER PARA QUE UMA ALTERAÇÃO FORA DO CONTAINER SEJA FEITA DENTRO DO CONTAINER
+    volumes:
+      - "./api:/api"
+    ports:
+      - "8000:8000"
+    #DEPENDENCIA COM O BANCO DE DADOS
+    depends_on:
+      - db
+
+  #FRONT-END DA APLICAÇÃO
+  app:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    volumes:
+      - "./client:/client"
+    ports:
+      - "8080:8080"
+    #DEPENDENCIA COM O SERVICE DA
+    depends_on:
+      - api
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: myproject
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
