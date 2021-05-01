@@ -21,7 +21,7 @@ jobs:
           yarn install
           yarn lint
           yarn test
-          yarn test:unit:coverage
+          make test-coverage
       
       - name: Coveralls
         uses: coverallsapp/github-action@master
