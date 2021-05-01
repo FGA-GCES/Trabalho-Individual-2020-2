@@ -21,9 +21,4 @@ jobs:
           yarn install
           yarn lint
           yarn test
-          make test-coverage
-      
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yarn test:unit:coverage
