@@ -6,6 +6,8 @@
   "author": "Ezequiel <ezequiel1de1oliveira@gmail.com>",
   "private": true,
   "scripts": {
+    "build": "quasar build",
+    "start": "node server.js",
     "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue ./",
     "test": "quasar test --unit jest",
