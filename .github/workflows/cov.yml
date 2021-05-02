@@ -1,26 +1,30 @@
 name: COV-CI
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  workflow_run:
-    # Allows you to run this workflow manually from the Actions tab
-    workflows: ["API-CI", "CLIENT-CI"]
-    types: [completed]
-    branches: [master]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  push:
+    branches: 
+      - master
 jobs:
  # The type of runner that the job will run on
-  on-success:
-    runs-on: ubuntu-latest
+  coverage:
     # Steps represent a sequence of tasks that will be executed as part of the job
+    runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - uses: paambaati/codeclimate-action@v2.7.5
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE_TOKEN }}
+    - name: build
+      run: docker-compose up --build -d
+    
+    - name: test api
+      run: docker-compose run api coverage run manage.py test
+    
+    - name: generate api xml
+      run: docker-compose run api coverage xml
+    
+    - name: test client
+      run: docker-compose run client quasar test --unit jest
+    
+    - uses: codecov/codecov-action@v1
       with:
-        coverageLocations: |
-          ${{github.workspace}}/client/test/jest/coverage/*
-          ${{github.workspace}}/api/*
-        debug: true
+        files: ${{github.workspace}}/api/coverage.xml, ${{github.workspace}}/client/test/jest/coverage/lcov.info
+        fail_ci_if_error: true
+        verbose: true

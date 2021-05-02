@@ -3,6 +3,7 @@
 [![API-CI](https://github.com/guilherme-mendes/Trabalho-Individual-2020-2/actions/workflows/api_ci.yml/badge.svg?branch=master)](https://github.com/guilherme-mendes/Trabalho-Individual-2020-2/actions/workflows/api_ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guilherme-mendes_Trabalho-Individual-2020-2_api&metric=alert_status)](https://sonarcloud.io/dashboard?id=guilherme-mendes_Trabalho-Individual-2020-2_api)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guilherme-mendes_Trabalho-Individual-2020-2_api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guilherme-mendes_Trabalho-Individual-2020-2_api)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fa17df98ca694d693c66/maintainability)](https://codeclimate.com/github/guilherme-mendes/Trabalho-Individual-2020-2/maintainability)
 <br>
 [![CLIENT-CI](https://github.com/guilherme-mendes/Trabalho-Individual-2020-2/actions/workflows/client_ci.yml/badge.svg)](https://github.com/guilherme-mendes/Trabalho-Individual-2020-2/actions/workflows/client_ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guilherme-mendes_Trabalho-Individual-2020-2_client&metric=alert_status)](https://sonarcloud.io/dashboard?id=guilherme-mendes_Trabalho-Individual-2020-2_client)

@@ -39,8 +39,6 @@ jobs:
           DB_NAME: myproject
           DB_USER: myuser
           DB_PASSWORD: password
-      - name: Run api tests
-        run: docker-compose run api python manage.py test
   
   quality_code:
     runs-on: ubuntu-latest
