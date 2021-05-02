@@ -1,7 +1,21 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@3.0.0
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: ./manage.py test
+          name: Test
+
 workflows:
-  node-tests:
+  main:
     jobs:
-      - node/test
+      - build-and-test
