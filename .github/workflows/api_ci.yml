@@ -41,6 +41,10 @@ jobs:
           DB_PASSWORD: password
       - name: Run api tests
         run: docker-compose run api python manage.py test
+      - name: Test coverage 
+        run: |
+          coverage run api/manage.py test api
+          coverage report --fail-under=90
   
   quality_code:
     runs-on: ubuntu-latest
