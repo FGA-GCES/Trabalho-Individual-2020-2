@@ -9,7 +9,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD 
         environment:
           POSTGRES_HOST: postgresql://root@localhost/circle_test?sslmode=disable
-      - image: circleci/postgres:9.6.5-alpine-ram
+      - image: circleci/postgres:12
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
@@ -20,19 +20,25 @@ jobs:
     steps:  
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client-9.6
       - run:
           command: |
-            pip3 install virtualenv
-            virtualenv env
-            . env/bin/activate
-            pip install djangorestframework psycopg2 django-cors-headers
+            sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+      - run:
+          command: |
+            sudo su - postgres
       - run:
           name: Database Setup
           command: |
             psql \
             -d $POSTGRES_HOST \
             -c "CREATE DATABASE myproject;"
+      - run:
+          command: |
+            pip3 install virtualenv
+            virtualenv env
+            . env/bin/activate
+            pip install djangorestframework psycopg2 django-cors-headers
+      
       - run:
           name: Running tests
           command: |
