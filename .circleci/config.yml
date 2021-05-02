@@ -4,7 +4,13 @@ jobs:
     working_directory: ~/api
     docker:
       - image: circleci/python:3.6.4
-      - image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_HOST: db
+      - image: circleci/postgres:12
+        environment:
+          POSTGRES_DB: myproject
+          POSTGRES_USER: myuser
+          POSTGRES_PASSWORD: password
     steps:  
       - checkout
       - run:
