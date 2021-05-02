@@ -26,7 +26,6 @@ jobs:
       - run:
           name: Database Setup
           command: |
-            sudo su - postgres \
             psql \
             -d $POSTGRES_HOST \
             -c "CREATE DATABASE myproject;" 
