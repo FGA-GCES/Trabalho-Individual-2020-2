@@ -6,9 +6,9 @@ jobs:
       - image: circleci/python:3.6.4
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWOR
+          password: $DOCKERHUB_PASSWORD 
         environment:
-          POSTGRES_HOST: postgresql://root@localhost/circle_test
+          POSTGRES_HOST: postgresql://root@localhost/myproject?sslmode=disable
       - image: circleci/postgres:12
         auth:
           username: mydockerhub-user
