@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "3.9"
+
+services:
+  - docker
+
+before_script:
+  - docker-compose build
+
+script:
+  - docker-compose up -d
+  - flake8 .
