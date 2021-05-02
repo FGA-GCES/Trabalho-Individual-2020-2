@@ -22,7 +22,7 @@ jobs:
             pip install djangorestframework psycopg2 django-cors-headers
       - run:
           name: Setup the database
-          command: psql -h localhost -p 5432 -U myuser -d circle_test -a -f schema.sql
+          command: psql -h localhost -p 5432 -U myuser -d circle_test
       - run:
           name: Running tests
           command: |
