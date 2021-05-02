@@ -9,4 +9,4 @@ services:
 before_script: pip install docker-compose
 
 script:
-  - docker-compose run --rm backend sh -c "python manage.py test"
+  - docker-compose run sh -c "python manage.py test"
