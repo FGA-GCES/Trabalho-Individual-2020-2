@@ -4,9 +4,15 @@ jobs:
     working_directory: ~/api
     docker:
       - image: circleci/python:3.6.4
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWOR
         environment:
-          POSTGRES_HOST: db
+          POSTGRES_HOST: postgresql://root@localhost/circle_test
       - image: circleci/postgres:12
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
         environment:
           POSTGRES_DB: myproject
           POSTGRES_USER: myuser
