@@ -1,0 +1,40 @@
+services:
+    postgres:
+        image: postgres:13
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: myproject
+
+
+    backend:
+        build: ./api
+        depends_on:
+            - postgres
+        command: ["sh", "entrypoint.sh"]
+        restart: "always"
+        volumes:
+            - ./api:/usr/src/back
+        ports:
+            - "8000:8000"
+        environment:
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: myproject
+            POSTGRES_HOST: postgres
+            POSTGRES_PORT: 5432
+
+    
+    frontend:
+        build: ./client
+        depends_on:
+            - postgres
+            - backend
+        ports:
+            - "8080:8080" #front port
+            - "8788:8788" #coverage port
+        volumes:
+            - ./client:/usr/src/front
+            - /usr/src/front/node_modules
