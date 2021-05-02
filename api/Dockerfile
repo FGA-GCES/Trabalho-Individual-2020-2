@@ -18,3 +18,7 @@ RUN pip3 install django \
         django-cors-headers
 
 COPY . /usr/src/back
+
+RUN ["chmod", "+x", "/usr/src/back/entrypoint.sh"]
+
+CMD ["/usr/src/back/entrypoint.sh"]

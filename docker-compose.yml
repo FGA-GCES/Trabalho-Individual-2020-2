@@ -13,8 +13,6 @@ services:
         build: ./api
         depends_on:
             - postgres
-        command: ["sh", "entrypoint.sh"]
-        restart: "always"
         volumes:
             - ./api:/usr/src/back
         ports:
