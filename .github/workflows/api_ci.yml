@@ -60,15 +60,15 @@ jobs:
         working-directory: "api/"
     steps:
       - uses: actions/checkout@v2
-      - name: Docker Login
+      - name: DockerHub
         env:
           DOCKER_USER: ${{secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag guilhermemp/gces-trabalho-individual-2020-2:api_latest
+      - name: Docker image
+        run: docker build . --file Django.Dockerfile --tag guilhermemp/gces-trabalho-individual-2020-2:api_latest
 
       - name: Docker Push
-        run: docker push guilhermemp/gces-trabalho-individual-2020-2:api_latest  
+        run: docker push guilhermemp/gces-trabalho-individual-2020-2:api_latest
