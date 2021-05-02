@@ -1,18 +1,11 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/api
     docker:
       - image: circleci/python:3.6.4
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD 
         environment:
-          POSTGRES_HOST: postgresql://root@localhost/circle_test?sslmode=disable
+          POSTGRES_HOST: postgresql://myuser@localhost:5432/circle_test
       - image: circleci/postgres:12
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
         environment:
           POSTGRES_DB: circle_test
           POSTGRES_USER: myuser
@@ -20,16 +13,16 @@ jobs:
     steps:  
       - checkout
       - run: sudo apt-get update
-      - run:
-          command: |
-            sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib 
+      - run: sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib 
       - run:
           command: |
             pip3 install virtualenv
             virtualenv env
             . env/bin/activate
             pip install djangorestframework psycopg2 django-cors-headers
-      
+      - run:
+          name: Setup the database
+          command: psql -h localhost -p 5432 -U myuser -d circle_test -a -f schema.sql
       - run:
           name: Running tests
           command: |
