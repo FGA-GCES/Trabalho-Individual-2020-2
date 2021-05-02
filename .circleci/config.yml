@@ -26,9 +26,16 @@ jobs:
             . env/bin/activate
             pip install djangorestframework psycopg2 django-cors-headers
       - run:
+          name: Database Setup
+          command: |
+            psql \
+            -d $POSTGRES_HOST \
+            -c "CREATE DATABASE myproject;"
+      - run:
           name: Running tests
           command: |
             . env/bin/activate
+            cd api/
             python3 manage.py test
       - store_artifacts:
           path: test-reports/
