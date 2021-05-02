@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         netcat \
         postgresql \
-        postgresql-contrib
+        postgresql-contrib \
+        flake8
 
 RUN pip3 install django \
         djangorestframework \
