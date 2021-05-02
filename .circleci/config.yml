@@ -22,13 +22,7 @@ jobs:
       - run: sudo apt-get update
       - run:
           command: |
-            sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
-      - run:
-          name: Database Setup
-          command: |
-            psql \
-            -d $POSTGRES_HOST \
-            -c "CREATE DATABASE myproject;" 
+            sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib 
       - run:
           command: |
             pip3 install virtualenv
