@@ -8,13 +8,13 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD 
         environment:
-          POSTGRES_HOST: postgresql://root@localhost/myproject?sslmode=disable
+          POSTGRES_HOST: postgresql://root@localhost/circle_test?sslmode=disable
       - image: circleci/postgres:12
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
         environment:
-          POSTGRES_DB: myproject
+          POSTGRES_DB: circle_test
           POSTGRES_USER: myuser
           POSTGRES_PASSWORD: password
     steps:  
@@ -29,7 +29,6 @@ jobs:
           name: Running tests
           command: |
             . env/bin/activate
-            cd api/
             python3 manage.py test
       - store_artifacts:
           path: test-reports/
