@@ -9,14 +9,3 @@ jobs:
     script:
       - docker-compose run --rm backend sh -c "python manage.py test"
       - docker-compose run --rm frontend sh -c "quasar test --unit jest"
-  
-  # - language: node_js
-  #   node_js:
-  #     - "12"
-  #   services:
-  #     - docker
-  #   before_script: 
-  #     - npm install
-  #     - docker-compose up -d
-  #   script:
-  #     - quasar test --unit jest
