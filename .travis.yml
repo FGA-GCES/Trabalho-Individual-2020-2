@@ -12,11 +12,17 @@ jobs:
   - language: node_js
     node_js:
       - "12"
-    python:
-      - "3.9"
+    cache:
+    directories:
+      - node_modules
     services:
       - docker
+    before_install:
+      - npm install -g node-gyp
     before_script: 
-      - pip install docker-compose
+      - npm install
+      - npm install -g standard
+      - docker-compose build
+      - docker-compose up -d
     script:
-      - docker-compose run --rm frontend sh -c "quasar test --unit jest"
+      - quasar test --unit jest
