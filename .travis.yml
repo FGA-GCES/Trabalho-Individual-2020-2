@@ -6,7 +6,8 @@ jobs:
       - docker
     before_script: 
       - pip install docker-compose
+      - yarn global add @quasar/cli
+      - yarn install --production
     script:
-      - docker-compose up --build -d
       - docker-compose run backend sh -c "python manage.py test"
       - docker-compose run frontend sh -c "quasar test --unit jest"
