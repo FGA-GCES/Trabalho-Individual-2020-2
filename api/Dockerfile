@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.9.1
 
 RUN mkdir -p /usr/src/back
 WORKDIR /usr/src/back
