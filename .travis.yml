@@ -7,7 +7,7 @@ jobs:
     before_script: 
       - pip install docker-compose
     script:
-      - docker-compose run backend sh -c "python manage.py test"
+      - docker-compose run backend sh -c "python manage.py test && flake8"
   
   - language: node_js
     node_js:
