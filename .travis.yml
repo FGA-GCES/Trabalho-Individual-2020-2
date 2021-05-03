@@ -8,7 +8,6 @@ jobs:
       - pip install docker-compose
     script:
       - docker-compose run backend sh -c "python manage.py test"
-      # - docker-compose run frontend sh -c "quasar test --unit jest"
   
   - language: node_js
     node_js:
@@ -20,4 +19,4 @@ jobs:
     script:
       - cd client
       - yarn add --dev jest
-      - yarn test:unit
+      - yarn test:unit:coverage
