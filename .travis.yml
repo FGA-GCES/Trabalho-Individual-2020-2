@@ -1,7 +1,17 @@
 jobs:
-  - language: python
-    python:
-      - "3.9"
+  # - language: python
+  #   python:
+  #     - "3.9"
+  #   services:
+  #     - docker
+  #   before_script: 
+  #     - pip install docker-compose
+  #   script:
+  #     - docker-compose run --rm backend sh -c "python manage.py test"
+  
+  - language: node_js
+    node_js:
+      - "12"
     services:
       - docker
     before_script: 
