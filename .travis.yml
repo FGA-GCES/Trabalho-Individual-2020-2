@@ -16,7 +16,7 @@ jobs:
     services:
       - docker
     before_script:
-      - yarn start
+      - yarn
     script:
       - cd client
       - yarn add --dev jest
