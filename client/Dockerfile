@@ -6,7 +6,7 @@ RUN mkdir -p /usr/src/front
 WORKDIR /usr/src/front
 
 RUN yarn global add @quasar/cli
-RUN yarn install --production
+RUN yarn install
 
 COPY . /usr/src/front
 
