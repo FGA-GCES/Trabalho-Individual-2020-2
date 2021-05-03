@@ -7,5 +7,5 @@ jobs:
     before_script: 
       - pip install docker-compose
     script:
-      - docker-compose run --rm backend sh -c "python manage.py test"
-      - docker-compose run --rm frontend sh -c "quasar test --unit jest"
+      - docker-compose run backend sh -c "python manage.py test"
+      - docker-compose run frontend sh -c "quasar test --unit jest"
