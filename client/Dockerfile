@@ -8,6 +8,6 @@ WORKDIR /usr/src/front
 RUN yarn global add @quasar/cli
 RUN yarn install --production
 
-COPY . .
+COPY . /usr/src/front
 
 CMD quasar dev
