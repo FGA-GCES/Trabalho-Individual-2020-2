@@ -19,12 +19,13 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db  
+      - db
     environment:
-      - DB_HOST=db
       - DB_NAME=myproject
       - DB_USER=myuser
       - DB_PASSWORD=password
+      - DB_HOST=db
+      - DB_PORT=5432
 
   client:
     build: ./client
