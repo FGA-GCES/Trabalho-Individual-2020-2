@@ -30,12 +30,19 @@ jobs:
     
     - name: api xml for coverage
       run: docker-compose run api coverage xml
-    
+
     - name: client tests
-      run: docker-compose run client quasar test --unit jest
-    
+      run: docker-compose run client yarn test:unit:coverage
+
+    # verify python code with pyflakes
+    - uses: lgeiger/pyflakes-action@master
+
+    - name: client lint
+      run: docker-compose run client yarn lint
+
     - uses: codecov/codecov-action@v1
       with:
-        files: ${{github.workspace}}/api/coverage.xml, ${{github.workspace}}/client/test/jest/coverage/lcov.info
+        files: api/coverage.xml, client/test/jest/coverage/lcov.info
         fail_ci_if_error: true
         verbose: true
+        

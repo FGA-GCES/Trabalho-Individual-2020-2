@@ -1,9 +1,9 @@
 FROM node
 
-RUN mkdir /app
+RUN mkdir /client
 
-WORKDIR /app
+WORKDIR /client
 
-COPY . /app
+COPY . /client
 
 RUN yarn install && yarn global add @quasar/cli
