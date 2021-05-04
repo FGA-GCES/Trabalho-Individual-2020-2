@@ -3,6 +3,10 @@ on:
   push:
     branches: 
       - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: 
+      - master
 
 jobs:
   coverage:
@@ -21,13 +25,13 @@ jobs:
     - name: build
       run: docker-compose up --build -d
     
-    - name: test api
+    - name: api tests
       run: docker-compose run api coverage run manage.py test
     
-    - name: generate api xml
+    - name: api xml for coverage
       run: docker-compose run api coverage xml
     
-    - name: test client
+    - name: client tests
       run: docker-compose run client quasar test --unit jest
     
     - uses: codecov/codecov-action@v1
