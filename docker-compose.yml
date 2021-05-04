@@ -5,11 +5,8 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment: 
-      - POSTGRES_DB=myproject
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=password
-      - PGDATA=/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
 
   api: 
     build: ./api
@@ -20,12 +17,8 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    environment:
-      - DB_NAME=myproject
-      - DB_USER=myuser
-      - DB_PASSWORD=password
-      - DB_HOST=db
-      - DB_PORT=5432
+    env_file:
+      - .env
 
   client:
     build: ./client
