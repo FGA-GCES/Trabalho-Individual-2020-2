@@ -51,6 +51,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN_API }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Pylint
+        run: docker-compose run api bash -c "pylint --load-plugins pylint_django --django-settings-module=api.settings --fail-under=5 ./**/*.py" 
 
   deploy:
     needs: [build, quality_code]
