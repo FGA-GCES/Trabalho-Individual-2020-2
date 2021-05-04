@@ -1,4 +1,4 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from .models import Task
 from rest_framework import generics
 from .serializers import TaskSerializer
