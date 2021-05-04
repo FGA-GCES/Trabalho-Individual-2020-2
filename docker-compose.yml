@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment: 
+      - POSTGRES_DB=myproject
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  api: 
+    build: ./api
+    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    volumes: 
+      - ./api:/api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  
+    environment:
+      - DB_HOST=db
+      - DB_NAME=myproject
+      - DB_USER=myuser
+      - DB_PASSWORD=password
+
+  client:
+    build: ./client
+    command: quasar dev
+    volumes:
+        - ./client:/client
+    ports:
+        - 8080:8080
+    depends_on:
+        - api
