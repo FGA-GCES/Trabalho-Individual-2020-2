@@ -1,7 +1,7 @@
 language: generic
 services:
   - docker
-  
+
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -13,4 +13,4 @@ jobs:
     - stage: build-and-test
       name: Build and Test
       script:
-        - ./build-and-run.sh
+        - docker-compose up
