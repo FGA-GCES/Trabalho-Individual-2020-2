@@ -13,7 +13,7 @@ services:
       - "5432:5432"
   api:
     build: api/
-    command: /bin/sh -c "api/entrypoint.sh"
+    command: /bin/sh -c "cd api && ./entrypoint.sh"
     volumes:
       - .:/api
     ports:
@@ -28,4 +28,4 @@ services:
       - '8080:8080'
     volumes:
       - '.:/client'
-    command: /bin/sh -c "client/entrypoint.sh"
+    command: /bin/sh -c "cd client && ./entrypoint.sh"
