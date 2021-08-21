@@ -28,6 +28,6 @@ services:
       - '8080:8080'
     volumes:
       - '.:/client'
-    command: /bin/sh -c "cd client && ./entrypoint.sh"
+    command: /bin/sh -c "cd client && ./run_tests.sh"
     depends_on:
       - api

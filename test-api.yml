@@ -13,21 +13,10 @@ services:
       - "5432:5432"
   api:
     build: api/
-    command: /bin/sh -c "cd api && ./entrypoint.sh"
+    command: /bin/sh -c "cd api && ./run_tests.sh"
     volumes:
       - .:/api
     ports:
       - "8000:8000"
     depends_on:
       - db
-  client: 
-    build:
-      context: client/
-      target: 'develop-stage'
-    ports:
-      - '8080:8080'
-    volumes:
-      - '.:/client'
-    command: /bin/sh -c "cd client && ./entrypoint.sh"
-    depends_on:
-      - api

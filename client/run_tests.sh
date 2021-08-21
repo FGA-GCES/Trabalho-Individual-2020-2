@@ -1,0 +1,1 @@
+quasar test --unit jest
