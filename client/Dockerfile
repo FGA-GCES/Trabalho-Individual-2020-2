@@ -15,3 +15,6 @@ FROM nginx:1.17.5-alpine as production-stage
 COPY --from=build-stage /client/dist/spa /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+FROM develop-stage as test-stage
+RUN quasar test --unit jest
