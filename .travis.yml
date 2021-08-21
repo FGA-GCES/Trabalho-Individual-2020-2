@@ -1,2 +1,10 @@
+language: generic
 services:
   - docker
+
+jobs:
+  include:
+    - stage: build-and-test
+      name: Build and Test
+      script:
+        - ./build-and-run.sh
