@@ -1,0 +1,1 @@
+sudo docker-compose --file deploy-client.yml up || exit 1
