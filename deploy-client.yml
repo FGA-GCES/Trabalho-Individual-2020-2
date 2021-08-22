@@ -1,0 +1,12 @@
+version: "3.9"
+   
+services:
+  client: 
+    build:
+      context: client/
+      target: 'develop-stage'
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/client'
+    command: /bin/sh -c "cd client && ./deploy.sh"
