@@ -23,6 +23,4 @@ jobs:
       name: Deploy
       script: 
         - ./deploy.sh
-      branches:
-        only:
-          - master
+      if: branch = master
