@@ -5,6 +5,5 @@ class TestModels(TestCase):
         task_title = "Task title"
         task_description = "Task description"
         task = Task.objects.create(title=task_title, description=task_description)
-        self.assertEqual(True, False)
         self.assertEqual(task.title, task_title)
         self.assertEqual(task.description, task_description)
