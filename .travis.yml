@@ -15,4 +15,4 @@ jobs:
     - stage: build-and-test
       name: Build and Test
       script:
-        - build_and_test.sh
+        - ./build_and_test.sh
