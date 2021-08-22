@@ -12,15 +12,7 @@ before_install:
 
 jobs:
   include:
-    - stage: Build
-      name: Build
+    - stage: build-and-test
+      name: Build and Test
       script:
-        - docker-compose build
-    - stage: Test API
-      name: Test API
-      script:
-        - docker-compose --file test-api.yml up --abort-on-container-exit
-    - stage: Test Client
-      name: Test Client
-      script:
-        - docker-compose --file test-client.yml up --abort-on-container-exit
+        - build_and_test.sh
