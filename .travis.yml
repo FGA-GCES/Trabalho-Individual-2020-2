@@ -19,8 +19,10 @@ jobs:
       name: Build and Test
       script:
         - ./build_and_test.sh
-    - state: deploy
-      name: Deploy
-      script: 
-        - ./deploy.sh
-      if: branch = master
+        
+deploy:
+  provider: script
+  script:
+    - ./deploy.sh
+  on:
+    branch: master
